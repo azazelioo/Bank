@@ -3,11 +3,11 @@ from tkinter import messagebox
 import sqlite3
 import random
 import bcrypt
-import os  # Импортируем модуль для работы с путями
+import os  
 
-# Получаем абсолютный путь к папке со скриптом
+
 script_dir = os.path.dirname(os.path.abspath(__file__))
-# Формируем полный путь к базе данных
+
 db_path = os.path.join(script_dir, "Bank.db")
 
 Alf = "ёйцукенгшщзхъфывапролджэячсмитьбю"
@@ -19,11 +19,11 @@ def check_enter_symbols(s):
             return False
     return True
 
-# Инициализация базы данных с правильным путём
+
 conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 
-# Создание таблиц
+
 cursor.execute('''CREATE TABLE IF NOT EXISTS Users 
                  (id INTEGER PRIMARY KEY,
                  Login TEXT NOT NULL UNIQUE,
@@ -315,8 +315,7 @@ class MainApp:
     def __init__(self, master, id):
         self.master = master
         self.id = id
-        
-        # Используем правильный путь к базе данных
+
         script_dir = os.path.dirname(os.path.abspath(__file__))
         db_path = os.path.join(script_dir, "Bank.db")
         self.conn = sqlite3.connect(db_path)
@@ -360,4 +359,5 @@ class MainApp:
 if __name__ == "__main__":
     app = AuthApp()
     app.run()
+
     conn.close()
